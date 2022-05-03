@@ -71,3 +71,31 @@ function copySorted(array) {
   return array.slice().sort();
 }
 
+// Create an extendable calculator
+// importance: 5
+// Create a constructor function Calculator that creates “extendable” calculator objects.
+
+function Calculator() {
+  this.calculate = function (str) {
+    let split = str.split(" "),
+      a = Number(split[0]),
+      op = split[1], 
+      b = Number(split[2]); 
+
+    return this.methods[op](a, b);
+  }
+
+  this.addMethod = function (name, func){
+    this.methods[name] = func;
+  }
+
+  this.methods = {
+    "-": (a, b) => a - b,
+    "+": (a, b) => a + b
+  };
+}
+
+// Map to names
+// importance: 5
+// You have an array of user objects, each one has user.name. Write the code that converts it into an array of names.
+
